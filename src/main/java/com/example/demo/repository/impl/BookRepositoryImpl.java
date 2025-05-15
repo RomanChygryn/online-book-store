@@ -10,7 +10,6 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
-
 @RequiredArgsConstructor
 @Repository
 public class BookRepositoryImpl implements BookRepository {
