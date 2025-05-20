@@ -47,8 +47,7 @@ public class BookRepositoryImpl implements BookRepository {
     public Optional<Book> findById(Long id) {
         try (EntityManager entityManager = entityManagerFactory.createEntityManager()) {
             Book book = entityManager.find(Book.class, id);
-
-            return book != null ? Optional.of(book) : Optional.empty();
+            return Optional.ofNullable(book);
         } catch (Exception e) {
             throw new RuntimeException("Can't fetch book with ID " + id + " from DB", e);
         }
