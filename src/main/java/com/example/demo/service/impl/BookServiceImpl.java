@@ -32,7 +32,7 @@ public class BookServiceImpl implements BookService {
         return bookRepository.findAll()
                 .stream()
                 .map(bookMapper::toDto)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     @Override
