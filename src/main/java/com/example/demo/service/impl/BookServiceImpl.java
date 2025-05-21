@@ -8,7 +8,6 @@ import com.example.demo.model.Book;
 import com.example.demo.repository.BookRepository;
 import com.example.demo.service.BookService;
 import java.util.List;
-import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -20,15 +19,13 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public BookDto save(CreateBookRequestDto requestDto) {
-        Book book = bookMapper.toModel(book);
-        Book savedBook = bookRepository.save(bookEntity);
+        Book book = bookRepository.save(bookMapper.toModel(requestDto));
 
-        return bookMapper.toDto(savedBook);
+        return bookMapper.toDto(book);
     }
 
     @Override
     public List<BookDto> findAll() {
-
         return bookRepository.findAll()
                 .stream()
                 .map(bookMapper::toDto)
