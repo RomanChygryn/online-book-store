@@ -50,7 +50,9 @@ public class BookRepositoryImpl implements BookRepository {
             Book book = entityManager.find(Book.class, id);
             return Optional.ofNullable(book);
         } catch (Exception e) {
-            throw new DataProcessingException("Can't fetch book with ID " + id + " from DB", e);
+            throw new DataProcessingException(
+                    String.format("Can't fetch book with ID %s from DB", id), e
+            );
         }
     }
 }
